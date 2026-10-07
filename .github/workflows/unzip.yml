@@ -1,0 +1,63 @@
+name: Extract project
+
+on:
+  push:
+    branches:
+      - main
+      - master
+
+permissions:
+  contents: write
+
+jobs:
+  extract:
+    if: ${{ !contains(github.event.head_commit.message, '[skip extract]') }}
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Check archive
+        id: archive
+        run: |
+          if [ -f "theking-edit.zip" ]; then
+            echo "found=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "found=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Extract project
+        if: steps.archive.outputs.found == 'true'
+        run: |
+          rm -rf extracted
+          mkdir extracted
+
+          unzip -q "theking-edit.zip" -d extracted
+
+          if [ -d "extracted/theking-edit" ]; then
+            cp -a extracted/theking-edit/. .
+          else
+            cp -a extracted/. .
+          fi
+
+          rm -rf extracted
+          rm -f theking-edit.zip
+
+      - name: Commit project files
+        if: steps.archive.outputs.found == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git add -A
+
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+            exit 0
+          fi
+
+          git commit -m "Extract theking-edit project [skip extract]"
+          git push
