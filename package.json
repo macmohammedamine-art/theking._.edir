@@ -1,0 +1,13 @@
+{
+  "name": "theking._.edit",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler pages dev . --compatibility-date=2026-10-07",
+    "preview": "wrangler pages dev . --compatibility-date=2026-10-07"
+  },
+  "devDependencies": {
+    "wrangler": "^4.148.0"
+  }
+}

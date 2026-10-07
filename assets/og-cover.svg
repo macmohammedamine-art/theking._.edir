@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <radialGradient id="a" cx="50%" cy="30%" r="70%"><stop stop-color="#2b2410"/><stop offset=".55" stop-color="#10131c"/><stop offset="1" stop-color="#06070a"/></radialGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#fff5ba"/><stop offset=".45" stop-color="#d8ad4b"/><stop offset="1" stop-color="#8b6115"/></linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#a)"/>
+  <circle cx="1040" cy="80" r="240" fill="#d8ad4b" opacity=".07"/>
+  <circle cx="120" cy="560" r="270" fill="#d8ad4b" opacity=".05"/>
+  <path d="M545 165l45 48 55-94 55 94 45-48-14 143H559z" fill="url(#gold)"/>
+  <text x="600" y="390" text-anchor="middle" fill="#fff" font-family="Inter,Arial" font-size="70" font-weight="800">theking._.edit</text>
+  <text x="600" y="450" text-anchor="middle" fill="#b8bbc5" font-family="Inter,Arial" font-size="29">Discover Apps · Tools · Websites · AI · Prompts</text>
+</svg>
